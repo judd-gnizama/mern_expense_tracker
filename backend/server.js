@@ -17,7 +17,11 @@ app.use("/api/test", testRouter);
 
 // Connect to database
 try {
-  startServer(PORT);
+  // startServer(PORT);
+  app.listen(PORT, () => {
+    console.log(`Listening to PORT ${PORT}`);
+  });
 } catch (error) {
   console.error(error);
+  process.exit(1);
 }
