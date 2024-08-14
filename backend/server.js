@@ -1,13 +1,9 @@
 import express from "express";
 import { testRouter } from "./routes/testRouter.js";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 import path from "path";
 
 const app = express();
 let PORT = 5000;
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 //Middlewares
 app.use(express.json());
@@ -20,13 +16,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/test", testRouter);
-
-// Serve static files from the frontend build directory
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
-});
 
 // Connect to database
 try {
