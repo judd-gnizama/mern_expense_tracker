@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 
+const BACKEND_PATH = "https://mern-expense-tracker-tau.vercel.app";
+
 function App() {
   const [message, setMessage] = useState("");
 
   const fetchData = async () => {
-    const res = await fetch("/api/test");
-    if (!res.ok) return;
-    const data = await res.json();
-    console.log("data", data);
-    setMessage(data.message);
-    return data.message;
+    try {
+      const res = await fetch(`${BACKEND_PATH}/api/test`);
+      const data = await res.json();
+      setMessage(data.message);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
   };
 
   useEffect(() => {
