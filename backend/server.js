@@ -16,10 +16,22 @@ app.use("/api/test", testRouter);
 
 // Connect to database
 try {
-  app.listen(PORT, () => {
-    console.log(`Listening on PORT ${PORT}`);
-  });
+  startServer(PORT);
 } catch (error) {
   console.error(error);
-  PORT = PORT + 1;
 }
+
+const startServer = (port) => {
+  app
+    .listen(port, () => {
+      console.log(`Listening on PORT ${port}`);
+    })
+    .on("error", (err) => {
+      if (err.code === "EADDRINUSE") {
+        console.error(`PORT ${port} is already in use. Trying next port...`);
+        startServer(port + 1);
+      } else {
+        console.error(err);
+      }
+    });
+};
