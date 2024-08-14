@@ -1,6 +1,5 @@
 import express from "express";
 import { testRouter } from "./routes/testRouter.js";
-import path from "path";
 
 const app = express();
 let PORT = 5000;

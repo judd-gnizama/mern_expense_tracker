@@ -9,13 +9,20 @@ function App() {
     const data = await res.json();
     console.log(data);
     setMessage(data.message);
+    return data.message;
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  return <div>Hello {message}</div>;
+  return (
+    <div>
+      <h1>Hellow</h1>
+      <button onClick={fetchData}>Fetch Data</button>
+      {message && <p>{message}</p>}
+    </div>
+  );
 }
 
 export default App;
