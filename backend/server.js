@@ -8,14 +8,13 @@ const app = express();
 let PORT = 5000;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-console.log(__dirname);
 
 //Middlewares
 app.use(express.json());
 
 //Routes
 app.get("/", (req, res) => {
-  res.json({ message: "Heylo w" });
+  res.json({ message: __dirname });
 });
 
 app.use("/api/test", testRouter);
