@@ -7,7 +7,7 @@ function App() {
     const res = await fetch("/api/test");
     if (!res.ok) return;
     const data = await res.json();
-    console.log(data);
+    console.log("data", data);
     setMessage(data.message);
     return data.message;
   };

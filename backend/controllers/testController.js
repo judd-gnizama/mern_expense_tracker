@@ -1,3 +1,3 @@
 export const test = async (req, res) => {
-  res.json({ message: "Heylow from server" });
+  res.status(200).json({ message: "Heylow from server" });
 };
