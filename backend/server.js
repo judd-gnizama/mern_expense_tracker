@@ -14,7 +14,7 @@ app.use(express.json());
 
 //Routes
 app.get("/", (req, res) => {
-  res.json({ message: "Heylow" });
+  res.json({ message: "Heylo w" });
 });
 
 app.use("/api/test", testRouter);
