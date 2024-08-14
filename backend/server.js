@@ -1,9 +1,12 @@
 import express from "express";
 import { testRouter } from "./routes/testRouter.js";
-import startServer from "./utils/startServer.js";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 let PORT = 5000;
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 //Middlewares
 app.use(express.json());
@@ -14,6 +17,10 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/test", testRouter);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
+});
 
 // Connect to database
 try {
