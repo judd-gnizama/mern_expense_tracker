@@ -2,7 +2,7 @@ import express from "express";
 import { testRouter } from "./routes/testRouter.js";
 
 const app = express();
-const PORT = 5000;
+let PORT = 5000;
 
 //Middlewares
 app.use(express.json());
@@ -21,4 +21,5 @@ try {
   });
 } catch (error) {
   console.error(error);
+  PORT = PORT + 1;
 }
