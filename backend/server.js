@@ -14,13 +14,13 @@ app.use(express.json());
 
 //Routes
 app.get("/", (req, res) => {
-  res.json({ message: path.resolve(__dirname, "./frontend/dist") });
+  res.json({ message: path.resolve(__dirname, "../frontend/dist") });
 });
 
 app.use("/api/test", testRouter);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./frontend/dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "../frontend/dist", "index.html"));
 });
 
 // Connect to database
