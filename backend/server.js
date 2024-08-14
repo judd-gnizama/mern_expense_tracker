@@ -1,14 +1,18 @@
 import express from "express";
 import { testRouter } from "./routes/testRouter.js";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
-let PORT = 5000;
+const PORT = 5000;
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 //Middlewares
 app.use(express.json());
 const corsOptions = {
-  origin: "https://mern-expense-tracker-zymi.vercel.app",
+  origin: FRONTEND_URL,
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -24,7 +28,6 @@ app.use("/api/test", testRouter);
 
 // Connect to database
 try {
-  // startServer(PORT);
   app.listen(PORT, () => {
     console.log(`Listening to PORT ${PORT}`);
   });
