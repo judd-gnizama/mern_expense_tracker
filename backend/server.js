@@ -14,7 +14,7 @@ app.use(express.json());
 
 //Routes
 app.get("/", (req, res) => {
-  res.json({ message: __dirname });
+  res.json({ message: path.resolve(__dirname, "./frontend/dist") });
 });
 
 app.use("/api/test", testRouter);
