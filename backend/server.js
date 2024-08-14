@@ -7,6 +7,7 @@ const app = express();
 let PORT = 5000;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+console.log(__dirname);
 
 //Middlewares
 app.use(express.json());
