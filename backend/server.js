@@ -8,7 +8,7 @@ let PORT = 5000;
 //Middlewares
 app.use(express.json());
 const corsOptions = {
-  origin: "https://mern-expense-tracker-zymi.vercel.app/",
+  origin: "https://mern-expense-tracker-zymi.vercel.app",
   credentials: true,
 };
 app.use(cors(corsOptions));
