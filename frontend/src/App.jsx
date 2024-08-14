@@ -5,12 +5,13 @@ function App() {
 
   const fetchData = async () => {
     const res = await fetch("/api/test");
+    if (!res.ok) return;
     const data = await res.json();
-    return data.message;
+    setMessage(data.message);
   };
 
   useEffect(() => {
-    setMessage(fetchData());
+    fetchData();
   }, []);
 
   return <div>Hello {message}</div>;
