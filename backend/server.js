@@ -21,8 +21,11 @@ app.get("/", (req, res) => {
 
 app.use("/api/test", testRouter);
 
+// Serve static files from the frontend build directory
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/dist", "/index.html"));
+  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
 });
 
 // Connect to database
