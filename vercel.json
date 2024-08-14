@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "installCommand": "npm install",
   "builds": [{ "src": "*.html", "use": "@vercel/static" }],
   "routes": [{ "src": "/*.js", "dest": "/" }]
 }
