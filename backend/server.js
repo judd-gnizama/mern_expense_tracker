@@ -11,7 +11,7 @@ app.use(express.json());
 //Routes
 app.get("/", (req, res) => {
   res.json({
-    message: path.resolve(__dirname, "../frontend/dist", "index.html"),
+    message: "Heylow",
   });
 });
 
