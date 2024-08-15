@@ -2,12 +2,16 @@ import express from "express";
 import { testRouter } from "./routes/testRouter.js";
 import cors from "cors";
 import dotenv from "dotenv";
+import morgan from "morgan";
 
 dotenv.config();
 
 const app = express();
-const PORT = 5000;
-const FRONTEND_URL = process.env.FRONTEND_URL;
+const PORT = process.env.PORT;
+const FRONTEND_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5173"
+    : process.env.FRONTEND_URL;
 
 //Middlewares
 app.use(express.json());
@@ -16,6 +20,9 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 //Routes
 app.get("/", (req, res) => {

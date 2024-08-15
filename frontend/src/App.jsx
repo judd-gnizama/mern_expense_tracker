@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-
-const BACKEND_PATH = "https://mern-expense-tracker-tau.vercel.app";
+import { useGlobalContext } from "../contexts/globalContext";
 
 function App() {
   const [message, setMessage] = useState("");
+  const { backendURL } = useGlobalContext();
 
   const fetchData = async () => {
     try {
-      const res = await fetch(`${BACKEND_PATH}/api/test`);
+      const res = await fetch(`${backendURL}/api/test`);
       const data = await res.json();
       setMessage(data.message);
     } catch (error) {
