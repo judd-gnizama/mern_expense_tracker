@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useGlobalContext } from "../contexts/globalContext";
 
-function App() {
+const App = () => {
   const [message, setMessage] = useState("");
   const { backendURL } = useGlobalContext();
 
@@ -26,6 +26,6 @@ function App() {
       {message && <p>{message}</p>}
     </div>
   );
-}
+};
 
 export default App;
